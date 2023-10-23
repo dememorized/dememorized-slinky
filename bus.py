@@ -15,7 +15,7 @@ def main():
         #sign._image.convert('RGB').show()
         
         display = InkyPHAT('black')
-        display.set_image(image.rotate(-90, expand=True))
+        display.set_image(sign._image.rotate(-90, expand=True))
         display.show()
         time.sleep(30)
 
