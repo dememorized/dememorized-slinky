@@ -33,7 +33,7 @@ class Departure:
 
     def seconds(self) -> int:
         dt = self.departure - datetime.now()
-        return int(dt.seconds)
+        return int(dt.total_seconds())
 
     def filter(self, other) -> bool:
         m = self.mode == None or self.mode == other.mode
