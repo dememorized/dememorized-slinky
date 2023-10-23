@@ -42,9 +42,6 @@ class Departure:
         return m and l and d
 
 
-memoizedDepartures = {}
-memoizedTimestamp = datetime(1900, 1, 1, 0, 0)
-
 class Departures:
     _lastUpdated: datetime = datetime(1900, 1, 1, 0, 0)
     _departures: [Departure]
@@ -79,7 +76,7 @@ class Departures:
 
     def next(self, tmpl: Departure) -> [Departure]:
         nextUpdate = self._lastUpdated+timedelta(minutes=5)
-        print(f'updating image, next update: {nextUpdate}')
+        print(f'updating image, next update: {nextUpdate}', flush=True)
         if nextUpdate < datetime.now():
             self._update()
 
