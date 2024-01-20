@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "slinky"
+version = "0.1.0"
+description = ""
+authors = ["Emil Tullstedt <84569620+dememorized@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Pillow = "^10.1.0"
+requests = "^2.31.0"
+inky = "^1.5.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.1.13"
+mypy = "^1.8.0"
+types-pillow = "^10.2.0.20240111"
+types-requests = "^2.31.0.20240106"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
