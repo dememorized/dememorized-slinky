@@ -1,7 +1,8 @@
-from typing import List
+from typing import Generator
 
 from PIL import Image, ImageDraw, ImageFont
-import sl
+
+import transit.transit
 
 _fontSm = 14
 _fontMd = 18
@@ -28,16 +29,17 @@ class DepartureSign:
         self._drawText(_fontLg, station)
         self.y += 10
 
-    def addDeparture(self, line: str, departures: List[sl.Departure]):
+    def addDeparture(
+        self, line: str, departures: Generator[transit.transit.Departure, None, None]
+    ):
         self._drawText(_fontSm, line)
 
-        if len(departures) == 0:
-            self._drawText(_fontMd, "...")
-        elif len(departures) == 1:
-            self._drawText(_fontMd, departures[0].human())
-        else:
-            self._drawText(_fontMd, departures[0].human())
-            self._drawText(_fontMd, departures[1].human())
+        i = 0
+        for departure in departures:
+            self._drawText(_fontMd, departure.human())
+            i += 1
+            if i == 2:
+                break
 
         self.y += 10
 
